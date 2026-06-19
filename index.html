@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ahmed & Sondos — Wedding Invitation · دعوة زفاف</title>
+<meta name="description" content="You are joyfully invited to celebrate the wedding of Ahmed & Sondos — June 3, 2026 at Tia-Vie." />
+<meta name="theme-color" content="#0f3d2e" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Ahmed & Sondos — Wedding Invitation" />
+<meta property="og:description" content="June 3, 2026 · 7:00 PM · Tia-Vie. We joyfully invite you to celebrate the beginning of our forever." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --ivory: #faf6ef;
+    --ivory-2: #f3ece0;
+    --champagne: #e8dcc6;
+    --emerald: #0f3d2e;
+    --emerald-soft: #1c5a44;
+    --gold: #b08d4f;           /* decorative only: borders, icons, ornaments, large accents */
+    --gold-light: #cdab6e;
+    --gold-bright: #d9bd84;    /* on dark emerald backgrounds */
+    --gold-text: #7a5e2c;      /* text-grade gold — passes AA on ivory/white */
+    --charcoal: #2c2a26;
+    --muted: #6f6a60;
+    --serif: 'Cormorant Garamond', 'Amiri', serif;
+    --arabic: 'Amiri', 'Cairo', serif;
+    --arabic-ui: 'Cairo', sans-serif;
+    --ui: 'Montserrat', sans-serif;
+    --shadow-soft: 0 18px 50px -24px rgba(15, 61, 46, 0.35);
+    --shadow-tile: 0 8px 24px -18px rgba(15, 61, 46, 0.30);
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--serif);
+    color: var(--charcoal);
+    background-color: var(--ivory);
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgba(176, 141, 79, 0.10), transparent 60%),
+      radial-gradient(90% 60% at 50% 110%, rgba(15, 61, 46, 0.08), transparent 55%);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* faint paper grain — barely perceptible */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.10;
+    z-index: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  }
+
+  .ar { font-family: var(--arabic); direction: rtl; }
+  .ar-ui { font-family: var(--arabic-ui); direction: rtl; }
+
+  /* ---------- Seal / Envelope intro ---------- */
+  #seal-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.2rem;
+    background:
+      radial-gradient(110% 90% at 50% 30%, #14503b 0%, var(--emerald) 55%, #0a2c20 100%);
+    text-align: center;
+    padding: 2rem;
+    transition: opacity 1s var(--ease), visibility 1s var(--ease);
+  }
+  #seal-screen.lifted { opacity: 0; visibility: hidden; }
+
+  .seal-deco-top { color: var(--gold-bright); opacity: 0.85; }
+
+  .envelope-wrap {
+    position: relative;
+    cursor: pointer;
+    width: 230px;
+    height: 158px;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: transform 0.5s var(--ease);
+  }
+  .envelope-wrap:hover { transform: translateY(-6px) scale(1.02); }
+  .envelope-wrap:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 16px; border-radius: 6px; }
+
+  .envelope-body {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(155deg, #fbf7ef, #ecdfca);
+    border: 1px solid rgba(176, 141, 79, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 20px 45px -18px rgba(0,0,0,0.6);
+  }
+  .envelope-flap {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 90px;
+    background: linear-gradient(155deg, #f4ead7, #e3d2b6);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top;
+    transition: transform 0.7s var(--ease);
+    z-index: 3;
+    border-radius: 8px 8px 0 0;
+  }
+  .seal-button {
+    position: absolute;
+    top: 56px; left: 50%;
+    width: 74px; height: 74px;
+    margin-left: -37px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold) 55%, #8a6c38 100%);
+    border: 2px solid rgba(255,255,255,0.25);
+    box-shadow: 0 10px 22px -8px rgba(0,0,0,0.55), inset 0 2px 6px rgba(255,255,255,0.3), inset 0 -3px 6px rgba(0,0,0,0.35);
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #fff7e6;
+    letter-spacing: 0.02em;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    transition: transform 0.6s var(--ease), opacity 0.5s var(--ease);
+    animation: seal-halo 4s ease-in-out infinite;
+  }
+  @keyframes seal-halo {
+    0%, 100% { box-shadow: 0 10px 22px -8px rgba(0,0,0,0.55), inset 0 2px 6px rgba(255,255,255,0.3), inset 0 -3px 6px rgba(0,0,0,0.35), 0 0 0 0 rgba(217,189,132,0.35); }
+    50% { box-shadow: 0 10px 22px -8px rgba(0,0,0,0.55), inset 0 2px 6px rgba(255,255,255,0.3), inset 0 -3px 6px rgba(0,0,0,0.35), 0 0 0 10px rgba(217,189,132,0); }
+  }
+  .envelope-letter {
+    position: absolute;
+    left: 12px; right: 12px;
+    top: 14px;
+    height: 120px;
+    background: #fffdf8;
+    border-radius: 4px;
+    box-shadow: 0 6px 14px -8px rgba(0,0,0,0.4);
+    z-index: 2;
+    transition: transform 0.8s var(--ease) 0.25s;
+  }
+
+  /* opened state */
+  .envelope-wrap.open .envelope-flap { transform: rotateX(180deg); z-index: 1; }
+  .envelope-wrap.open .seal-button { transform: scale(0.4) translateY(-30px); opacity: 0; animation: none; }
+  .envelope-wrap.open .envelope-letter { transform: translateY(-120px) scale(1.04); }
+
+  .seal-title { color: var(--ivory); }
+  .seal-title .names {
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+  }
+  .seal-title .amp { color: var(--gold-bright); font-style: italic; }
+  .seal-instruction {
+    font-family: var(--ui);
+    text-transform: uppercase;
+    letter-spacing: 0.34em;
+    font-size: 0.7rem;
+    color: var(--gold-bright);
+  }
+  .seal-instruction .ar-ui { letter-spacing: 0; font-size: 0.95rem; margin-top: 0.4rem; display:block; }
+
+  /* ---------- Page reveal ---------- */
+  #page { opacity: 0; transition: opacity 1.2s var(--ease) 0.3s; position: relative; z-index: 2; }
+  body.revealed #page { opacity: 1; }
+  body:not(.revealed) { overflow: hidden; height: 100vh; }
+  #page:focus { outline: none; }
+
+  /* ---------- Layout primitives ---------- */
+  section { padding: clamp(4rem, 9vw, 7.5rem) 1.5rem; position: relative; }
+  .container { max-width: 880px; margin: 0 auto; }
+  .center { text-align: center; }
+
+  .eyebrow {
+    font-family: var(--ui);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-size: 0.68rem;
+    color: var(--gold-text);
+    margin-bottom: 1.4rem;
+  }
+
+  h1, h2 { font-weight: 500; color: var(--emerald); }
+  .display { font-size: clamp(2.8rem, 9vw, 5rem); line-height: 1.05; letter-spacing: -0.015em; }
+  .amp { color: var(--gold); font-style: italic; }
+
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    color: var(--gold);
+    margin: 1.8rem auto;
+    max-width: 320px;
+  }
+  .ornament::before, .ornament::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(90deg, transparent, var(--gold-light));
+  }
+  .ornament::after { background: linear-gradient(90deg, var(--gold-light), transparent); }
+  .ornament svg { flex: none; }
+
+  .lede { font-size: clamp(1.25rem, 3.4vw, 1.7rem); color: var(--charcoal); font-weight: 400; margin-top: 1.8rem; }
+  .lede .ar { font-size: 1.05em; display: block; margin-top: 0.6rem; color: var(--emerald-soft); }
+  .subtle { color: var(--muted); }
+
+  /* reveal animation */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- Hero ---------- */
+  #hero { padding-top: clamp(5rem, 12vw, 9rem); }
+  .monogram {
+    width: 108px; height: 108px;
+    margin: 0 auto 1.8rem;
+    border: 1px solid var(--gold-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.1rem; color: var(--gold);
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+  .monogram::after {
+    content: ""; position: absolute; inset: 7px;
+    border: 1px solid rgba(176,141,79,0.35); border-radius: 50%;
+  }
+  .hero-date {
+    font-family: var(--ui);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--emerald-soft);
+    margin-top: 1.8rem;
+  }
+
+  /* ---------- Countdown ---------- */
+  #countdown { background: var(--ivory-2); border-top: 1px solid var(--champagne); border-bottom: 1px solid var(--champagne); }
+  .countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.6rem, 2vw, 1.4rem);
+    max-width: 640px;
+    margin: 2.4rem auto 0;
+  }
+  .count-cell {
+    background: var(--ivory);
+    border: 1px solid var(--champagne);
+    border-radius: 10px;
+    padding: clamp(0.85rem, 3vw, 1.8rem) 0.35rem;
+    box-shadow: var(--shadow-tile);
+  }
+  .count-num {
+    font-size: clamp(2rem, 8vw, 3.4rem);
+    font-weight: 500;
+    color: var(--emerald);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .count-label {
+    font-family: var(--ui);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.62rem;
+    color: var(--gold-text);
+    margin-top: 0.7rem;
+  }
+  .count-label .ar-ui { letter-spacing: 0; }
+
+  /* ---------- Details ---------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem;
+    margin-top: 2.6rem;
+    align-items: stretch;
+  }
+  .card {
+    background: #fff;
+    border: 1px solid var(--champagne);
+    border-radius: 16px;
+    padding: 2.4rem 1.8rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 26px 60px -28px rgba(15,61,46,0.45); }
+  .card-icon { color: var(--gold); margin-bottom: 1rem; }
+  .card h3 { font-size: 1.7rem; color: var(--emerald); font-weight: 500; }
+  .card .big { font-size: 2.1rem; color: var(--emerald); margin: 0.2rem 0; }
+  .card p { color: var(--muted); }
+  .card .ar { color: var(--emerald-soft); margin-top: 0.3rem; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: var(--ui);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    border: 1px solid var(--gold);
+    color: var(--gold-text);
+    background: transparent;
+  }
+  .btn svg { flex: none; }
+  .btn-stack { display: inline-flex; flex-direction: column; align-items: flex-start; line-height: 1.2; }
+  .btn-stack small { font-size: 0.82em; letter-spacing: 0; opacity: 0.85; margin-top: 2px; }
+  .btn-solid { background: var(--emerald); color: var(--ivory); border-color: var(--emerald); }
+  .btn-solid:hover { background: var(--emerald-soft); transform: translateY(-2px); }
+  .btn-ghost { margin-top: 1.4rem; }
+  .btn-ghost:hover { background: var(--emerald); color: var(--ivory); border-color: var(--emerald); }
+  .btn:focus-visible { outline: 2px solid var(--emerald); outline-offset: 3px; }
+  .actions-row { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; margin-top: 2.4rem; }
+
+  /* ---------- Guestbook ---------- */
+  #guestbook { background: var(--ivory-2); border-top: 1px solid var(--champagne); }
+  .form-card {
+    background: #fff;
+    border: 1px solid var(--champagne);
+    border-radius: 18px;
+    padding: clamp(1.8rem, 5vw, 3rem);
+    box-shadow: var(--shadow-soft);
+    margin-top: 2.4rem;
+    text-align: left;
+  }
+  .field { margin-bottom: 1.2rem; }
+  .field label {
+    display: block;
+    font-family: var(--ui);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--gold-text);
+    margin-bottom: 0.5rem;
+  }
+  .field label .ar-ui { letter-spacing: 0; }
+  .field input, .field textarea {
+    width: 100%;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--charcoal);
+    background: var(--ivory);
+    border: 1px solid var(--champagne);
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--gold-text);
+    box-shadow: 0 0 0 3px rgba(122,94,44,0.45);
+  }
+  .field textarea { resize: vertical; min-height: 96px; }
+
+  .wishes { margin-top: 2.6rem; display: grid; gap: 1rem; }
+  .wish {
+    background: #fff;
+    border: 1px solid var(--champagne);
+    border-left: 3px solid var(--gold);
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    animation: wishIn 0.5s var(--ease);
+  }
+  @keyframes wishIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .wish .msg { font-size: 1.15rem; color: var(--charcoal); font-style: italic; }
+  .wish .from { font-family: var(--ui); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.16em; color: var(--gold-text); margin-top: 0.6rem; }
+  .wishes-empty { color: var(--muted); font-style: italic; }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--emerald); color: var(--ivory); text-align: center; padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; }
+  footer .ornament { color: var(--gold-bright); }
+  footer .ornament::before { background: linear-gradient(90deg, transparent, var(--gold-bright)); }
+  footer .ornament::after { background: linear-gradient(90deg, var(--gold-bright), transparent); }
+  footer .names { font-size: clamp(2.2rem, 7vw, 3.2rem); font-weight: 500; letter-spacing: -0.01em; }
+  footer .names .amp { color: var(--gold-bright); }
+  footer .tag { font-family: var(--ui); letter-spacing: 0.28em; text-transform: uppercase; font-size: 0.72rem; color: var(--gold-bright); margin-top: 1rem; }
+  footer .ar { color: rgba(250,246,239,0.88); margin-top: 1.8rem; font-size: 1.2rem; line-height: 1.8; letter-spacing: 0; }
+
+  /* scroll cue */
+  .scroll-cue {
+    position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+    color: var(--gold-text); z-index: 900;
+    font-family: var(--ui); font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0; transition: opacity 0.6s var(--ease);
+    pointer-events: none;
+  }
+  body.revealed .scroll-cue { opacity: 0.85; animation: bob 2s ease-in-out infinite; }
+  @keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0);} 50% { transform: translateX(-50%) translateY(6px);} }
+
+  @media (max-width: 380px) {
+    #seal-screen { gap: 1.6rem; }
+    .envelope-wrap { width: 200px; height: 138px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ SEAL INTRO ============ -->
+  <div id="seal-screen">
+    <div class="seal-deco-top" aria-hidden="true">
+      <svg width="70" height="22" viewBox="0 0 70 22" fill="none"><path d="M2 11h22M46 11h22" stroke="currentColor" stroke-width="1"/><path d="M35 3l3 8-3 8-3-8z" fill="currentColor"/><circle cx="28" cy="11" r="1.6" fill="currentColor"/><circle cx="42" cy="11" r="1.6" fill="currentColor"/></svg>
+    </div>
+
+    <div class="seal-title">
+      <div class="eyebrow" style="color:var(--gold-bright)">Together with their families</div>
+      <div class="names">Ahmed <span class="amp">&amp;</span> Sondos</div>
+    </div>
+
+    <button type="button" class="envelope-wrap" id="envelope" aria-label="Click the seal to open the invitation — اضغط لفتح الدعوة">
+      <span class="envelope-letter"></span>
+      <span class="envelope-body"></span>
+      <span class="envelope-flap"></span>
+      <span class="seal-button" aria-hidden="true">A&amp;S</span>
+    </button>
+
+    <div class="seal-instruction">
+      Click the seal to open
+      <span class="ar-ui" lang="ar">اضغط لفتح الدعوة</span>
+    </div>
+  </div>
+
+  <!-- scroll cue -->
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll · اسحب</span>
+    <svg width="16" height="22" viewBox="0 0 16 22" fill="none"><rect x="1" y="1" width="14" height="20" rx="7" stroke="currentColor"/><circle cx="8" cy="7" r="2" fill="currentColor"><animate attributeName="cy" values="7;13;7" dur="1.6s" repeatCount="indefinite"/></circle></svg>
+  </div>
+
+  <!-- ============ PAGE ============ -->
+  <main id="page" tabindex="-1" inert>
+
+    <!-- HERO -->
+    <section id="hero" class="center">
+      <div class="container reveal">
+        <div class="monogram">A&amp;S</div>
+        <div class="eyebrow">Together with their families</div>
+        <h1 class="display">Ahmed <span class="amp">&amp;</span> Sondos</h1>
+        <div class="ornament" aria-hidden="true">
+          <svg width="34" height="14" viewBox="0 0 34 14" fill="none"><path d="M17 1c4 4 8 5 16 6-8 1-12 2-16 6-4-4-8-5-16-6 8-1 12-2 16-6z" fill="currentColor"/></svg>
+        </div>
+        <p class="lede">
+          We joyfully invite you to celebrate the beginning of our forever.
+          <span class="ar" lang="ar">يسعدنا دعوتكم لمشاركتنا فرحة بداية حياتنا معًا</span>
+        </p>
+        <div class="hero-date">Wednesday · June 3, 2026 · 7:00 PM</div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section id="countdown" class="center">
+      <div class="container reveal">
+        <div class="eyebrow">Counting down to our day</div>
+        <h2 class="display" style="font-size:clamp(1.8rem,5vw,2.6rem)">Until we say "I do"</h2>
+        <p class="subtle ar-ui" lang="ar" style="font-size:1.05rem">العد التنازلي ليوم فرحنا</p>
+        <div class="countdown-grid" id="countdown-grid" role="timer" aria-live="off">
+          <div class="count-cell"><div class="count-num" id="cd-days">00</div><div class="count-label">Days <span class="ar-ui" lang="ar">يوم</span></div></div>
+          <div class="count-cell"><div class="count-num" id="cd-hours">00</div><div class="count-label">Hours <span class="ar-ui" lang="ar">ساعة</span></div></div>
+          <div class="count-cell"><div class="count-num" id="cd-mins">00</div><div class="count-label">Minutes <span class="ar-ui" lang="ar">دقيقة</span></div></div>
+          <div class="count-cell"><div class="count-num" id="cd-secs">00</div><div class="count-label">Seconds <span class="ar-ui" lang="ar">ثانية</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section id="details" class="center">
+      <div class="container reveal">
+        <div class="eyebrow">The Celebration</div>
+        <h2 class="display" style="font-size:clamp(2rem,6vw,3rem)">When <span class="amp">&amp;</span> Where</h2>
+        <div class="ornament" aria-hidden="true">
+          <svg width="34" height="14" viewBox="0 0 34 14" fill="none"><path d="M17 1c4 4 8 5 16 6-8 1-12 2-16 6-4-4-8-5-16-6 8-1 12-2 16-6z" fill="currentColor"/></svg>
+        </div>
+
+        <div class="cards">
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            </div>
+            <h3>The Hour</h3>
+            <div class="big">7:00 PM</div>
+            <p>Reception to follow</p>
+            <p class="ar" lang="ar">السابعة مساءً · يليها حفل الاستقبال</p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s7-6.4 7-12a7 7 0 1 0-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            </div>
+            <h3>The Venue</h3>
+            <div class="big">Tia-Vie</div>
+            <p>June 3, 2026</p>
+            <p class="ar" lang="ar">قاعة تيا ڤي</p>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=Tia-Vie" target="_blank" rel="noopener" aria-label="Get directions to Tia-Vie on Google Maps (opens in a new tab)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-6.4 7-12a7 7 0 1 0-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+              <span class="btn-stack">Get Directions<small lang="ar">الاتجاهات</small></span>
+            </a>
+          </div>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" class="btn btn-solid" id="add-calendar">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            <span class="btn-stack">Add to Calendar<small lang="ar">أضِف للتقويم</small></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUESTBOOK -->
+    <section id="guestbook" class="center">
+      <div class="container reveal">
+        <div class="eyebrow">Guestbook</div>
+        <h2 class="display" style="font-size:clamp(2rem,6vw,3rem)">Share your wishes</h2>
+        <p class="subtle">Share your love, wishes, or a note for the couple.</p>
+        <p class="subtle ar-ui" lang="ar" style="font-size:1.05rem">شاركنا محبتك أو دعواتك أو كلمة من القلب</p>
+
+        <form class="form-card" id="wish-form">
+          <div class="field">
+            <label for="g-name">Your name <span class="ar-ui" lang="ar">الاسم</span></label>
+            <input id="g-name" name="name" type="text" maxlength="60" required autocomplete="name" placeholder="Your name…" />
+          </div>
+          <div class="field">
+            <label for="g-msg">Your message <span class="ar-ui" lang="ar">رسالتك</span></label>
+            <textarea id="g-msg" name="message" maxlength="400" required placeholder="Wishing you a lifetime of love…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid" style="margin-top:0.4rem">
+            <span class="btn-stack">Send your wishes<small lang="ar">أرسل</small></span>
+          </button>
+        </form>
+
+        <div class="wishes" id="wishes" aria-live="polite">
+          <p class="wishes-empty" id="wishes-empty">Be the first to leave a wish 💛</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="ornament" aria-hidden="true">
+        <svg width="34" height="14" viewBox="0 0 34 14" fill="none"><path d="M17 1c4 4 8 5 16 6-8 1-12 2-16 6-4-4-8-5-16-6 8-1 12-2 16-6z" fill="currentColor"/></svg>
+      </div>
+      <div class="names">Ahmed <span class="amp">&amp;</span> Sondos</div>
+      <div class="tag">June 3, 2026 · Tia-Vie</div>
+      <p class="ar" lang="ar">بالحب ندعوكم لمشاركتنا الفرح</p>
+    </footer>
+  </main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Seal open ---------- */
+  var envelope = document.getElementById("envelope");
+  var sealScreen = document.getElementById("seal-screen");
+  var page = document.getElementById("page");
+  var body = document.body;
+  var opened = false;
+
+  function openInvitation() {
+    if (opened) return;
+    opened = true;
+    envelope.classList.add("open");
+    page.removeAttribute("inert");
+    setTimeout(function () {
+      sealScreen.classList.add("lifted");
+      body.classList.add("revealed");
+      // move keyboard focus into the now-visible page
+      try { page.focus({ preventScroll: true }); } catch (e) { page.focus(); }
+    }, 850);
+    setTimeout(function () {
+      if (sealScreen) sealScreen.style.display = "none";
+    }, 1900);
+  }
+  envelope.addEventListener("click", openInvitation);
+
+  /* ---------- Countdown ---------- */
+  var target = new Date("2026-06-03T19:00:00").getTime();
+  var elDays = document.getElementById("cd-days");
+  var elHours = document.getElementById("cd-hours");
+  var elMins = document.getElementById("cd-mins");
+  var elSecs = document.getElementById("cd-secs");
+  function pad(n) { return n < 10 ? "0" + n : "" + n; }
+  function tick() {
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      elDays.textContent = elHours.textContent = elMins.textContent = elSecs.textContent = "00";
+      var grid = document.getElementById("countdown-grid");
+      if (grid && !grid.dataset.done) {
+        grid.dataset.done = "1";
+        grid.insertAdjacentHTML("afterend", '<p class="lede" style="margin-top:1.8rem">Today is the day — with all our love. <span class="ar" lang="ar">حلّ يوم فرحنا</span></p>');
+      }
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    elDays.textContent = pad(d);
+    elHours.textContent = pad(h);
+    elMins.textContent = pad(m);
+    elSecs.textContent = pad(s);
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* ---------- Scroll reveal ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(function (r) { io.observe(r); });
+  } else {
+    reveals.forEach(function (r) { r.classList.add("in"); });
+  }
+
+  /* ---------- Add to Calendar (.ics) ---------- */
+  document.getElementById("add-calendar").addEventListener("click", function () {
+    var ics = [
+      "BEGIN:VCALENDAR",
+      "VERSION:2.0",
+      "PRODID:-//Ahmed and Sondos//Wedding//EN",
+      "BEGIN:VEVENT",
+      "UID:ahmed-sondos-2026@wedding",
+      "DTSTAMP:20260101T000000Z",
+      "DTSTART:20260603T190000",
+      "DTEND:20260603T230000",
+      "SUMMARY:Wedding of Ahmed & Sondos",
+      "DESCRIPTION:We joyfully invite you to celebrate the beginning of our forever.",
+      "LOCATION:Tia-Vie",
+      "END:VEVENT",
+      "END:VCALENDAR"
+    ].join("\r\n");
+    var blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "ahmed-and-sondos-wedding.ics";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  });
+
+  /* ---------- Guestbook (localStorage) ---------- */
+  var STORE_KEY = "ahmed_sondos_wishes";
+  var form = document.getElementById("wish-form");
+  var wishesEl = document.getElementById("wishes");
+  var emptyEl = document.getElementById("wishes-empty");
+
+  function loadWishes() {
+    try { return JSON.parse(localStorage.getItem(STORE_KEY) || "[]"); }
+    catch (e) { return []; }
+  }
+  function saveWishes(list) {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(list)); } catch (e) {}
+  }
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function renderWishes() {
+    var list = loadWishes();
+    Array.prototype.slice.call(wishesEl.querySelectorAll(".wish")).forEach(function (n) { n.remove(); });
+    if (!list.length) { emptyEl.style.display = ""; return; }
+    emptyEl.style.display = "none";
+    list.slice().reverse().forEach(function (w) {
+      var div = document.createElement("div");
+      div.className = "wish";
+      div.innerHTML = '<div class="msg">“' + escapeHtml(w.message) + '”</div><div class="from">— ' + escapeHtml(w.name) + '</div>';
+      wishesEl.appendChild(div);
+    });
+  }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = document.getElementById("g-name").value.trim();
+    var message = document.getElementById("g-msg").value.trim();
+    if (!name || !message) return;
+    var list = loadWishes();
+    list.push({ name: name, message: message, at: Date.now() });
+    saveWishes(list);
+    form.reset();
+    renderWishes();
+  });
+  renderWishes();
+})();
+</script>
+</body>
+</html>
