@@ -4,11 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Ahmed & Sondos — Under One Sky · دعوة زفاف</title>
-<meta name="description" content="Under one sky, two souls become one. You are invited to the wedding of Ahmed & Sondos — June 3, 2026, 7:00 PM at Tia-Vie." />
+<meta name="description" content="Under one sky, two souls become one. You are invited to the wedding of Ahmed & Sondos — September 3, 2026, 7:00 PM at Tia-Vie." />
 <meta name="theme-color" content="#0a0e23" />
 
 <meta property="og:title" content="Ahmed & Sondos — Under One Sky" />
-<meta property="og:description" content="June 3, 2026 · 7:00 PM · Tia-Vie. Under one sky, two souls become one." />
+<meta property="og:description" content="September 3, 2026 · 7:00 PM · Tia-Vie. Under one sky, two souls become one." />
 <meta property="og:type" content="website" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,10 +55,11 @@
     content: "";
     position: fixed; inset: 0; z-index: -2;
     background:
-      radial-gradient(120% 90% at 50% -20%, #1a2350 0%, transparent 55%),
-      radial-gradient(90% 70% at 18% 8%, rgba(99, 71, 140, 0.22), transparent 50%),
-      radial-gradient(80% 60% at 85% 95%, rgba(122, 60, 70, 0.18), transparent 55%),
-      linear-gradient(180deg, #0a0e23 0%, #0b1130 50%, #080a1d 100%);
+      radial-gradient(120% 90% at 50% -10%, #20284f 0%, transparent 55%),
+      radial-gradient(80% 62% at 14% 10%, rgba(112, 82, 165, 0.26), transparent 52%),
+      radial-gradient(85% 60% at 88% 92%, rgba(152, 76, 88, 0.20), transparent 55%),
+      radial-gradient(58% 40% at 50% 30%, rgba(231, 201, 135, 0.07), transparent 60%),
+      linear-gradient(180deg, #090c20 0%, #0c1234 48%, #070918 100%);
   }
 
   #starfield { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
@@ -106,12 +107,18 @@
     content: ""; position: absolute; left: 50%; top: -12px; transform: translateX(-50%);
     width: 2px; height: 14px; background: var(--gold-deep);
   }
+  .lantern-ring {
+    position: absolute; left: 50%; top: -6px; transform: translateX(-50%);
+    width: 14px; height: 14px; border: 2px solid var(--gold-deep); border-radius: 50%;
+  }
   .lantern-base { bottom: 14px; width: 64px; }
   .lantern-body {
     position: absolute; left: 50%; top: 30px; transform: translateX(-50%);
     width: 80px; height: 110px; border-radius: 40px / 30px;
     border: 2px solid var(--gold-deep);
-    background: linear-gradient(180deg, rgba(231,201,135,0.10), rgba(231,201,135,0.03));
+    background:
+      linear-gradient(180deg, rgba(231,201,135,0.12), rgba(231,201,135,0.03)),
+      repeating-linear-gradient(0deg, transparent 0 16px, rgba(231,201,135,0.09) 16px 17px);
     box-shadow: inset 0 0 18px rgba(231,201,135,0.10);
     overflow: hidden;
     transition: box-shadow 0.8s var(--ease), background 0.8s var(--ease), border-color 0.8s var(--ease);
@@ -131,9 +138,11 @@
     transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
   }
   .lantern.lit .lantern-body {
-    border-color: var(--gold);
-    background: linear-gradient(180deg, rgba(244,220,160,0.35), rgba(231,201,135,0.12));
-    box-shadow: inset 0 0 26px rgba(244,220,160,0.55), 0 0 70px 14px rgba(231,201,135,0.40);
+    border-color: var(--gold-bright);
+    background:
+      linear-gradient(180deg, rgba(255,228,170,0.45), rgba(231,201,135,0.16)),
+      repeating-linear-gradient(0deg, transparent 0 16px, rgba(255,228,170,0.12) 16px 17px);
+    box-shadow: inset 0 0 30px rgba(255,236,190,0.60), 0 0 90px 20px rgba(231,201,135,0.45), 0 0 44px 8px rgba(227,166,160,0.30);
   }
   .lantern.lit .flame { opacity: 1; transform: translateX(-50%) scale(1); animation: flicker 1.6s ease-in-out infinite; }
   @keyframes flicker { 0%,100% { transform: translateX(-50%) scale(1) translateY(0); } 50% { transform: translateX(-50%) scale(1.08) translateY(-2px); } }
@@ -178,7 +187,7 @@
     pointer-events: none; z-index: -1; overflow: visible;
   }
   .constellation .c-line {
-    stroke: var(--gold); stroke-width: 1; fill: none; opacity: 0.55;
+    stroke: var(--gold); stroke-width: 0.8; fill: none; opacity: 0.3;
     stroke-dasharray: var(--len); stroke-dashoffset: var(--len);
   }
   body.revealed .constellation .c-line { animation: draw 2.6s var(--ease) 0.4s forwards; }
@@ -339,6 +348,24 @@
   }
   body.revealed .cue { opacity: 0.8; animation: bob 2.2s ease-in-out infinite; }
   .cue.gone { opacity: 0 !important; animation: none; }
+
+  /* music toggle */
+  .music-toggle {
+    position: fixed; top: 16px; right: 16px; z-index: 950;
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-family: var(--ui); font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); background: rgba(10, 14, 35, 0.5); border: 1px solid var(--line);
+    border-radius: 999px; padding: 0.5rem 0.8rem; cursor: pointer;
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.6s var(--ease) 0.4s, background 0.3s, border-color 0.3s, color 0.3s;
+  }
+  body.revealed .music-toggle { opacity: 1; pointer-events: auto; }
+  .music-toggle:hover { border-color: var(--gold-deep); background: rgba(10, 14, 35, 0.72); }
+  .music-toggle:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
+  .music-toggle.on { color: var(--night); background: linear-gradient(120deg, var(--gold), var(--gold-deep)); border-color: transparent; }
+  .music-toggle.on svg { animation: notePulse 1.3s ease-in-out infinite; }
+  @keyframes notePulse { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
   @keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 
   @media (max-width: 380px) {
@@ -364,6 +391,7 @@
     <div class="gate-names">Ahmed <span class="amp">&amp;</span> Sondos</div>
 
     <button type="button" class="lantern" id="lantern" aria-label="Tap to light the lantern and open the invitation — أضئ الفانوس لفتح الدعوة">
+      <span class="lantern-ring"></span>
       <span class="lantern-cap"></span>
       <span class="lantern-body"><span class="flame"></span></span>
       <span class="lantern-base"></span>
@@ -379,6 +407,11 @@
     <span>Scroll · اسحب</span>
     <svg width="16" height="22" viewBox="0 0 16 22" fill="none"><rect x="1" y="1" width="14" height="20" rx="7" stroke="currentColor"/><circle cx="8" cy="7" r="2" fill="currentColor"><animate attributeName="cy" values="7;13;7" dur="1.6s" repeatCount="indefinite"/></circle></svg>
   </div>
+
+  <button type="button" id="music-toggle" class="music-toggle" aria-pressed="false" aria-label="Play ambient oud music — تشغيل موسيقى العود">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 18V5l10-2v11"/><circle cx="6" cy="18" r="2.6"/><circle cx="16" cy="16" r="2.6"/></svg>
+    <span class="m-label">Music</span>
+  </button>
 
   <!-- ===================== PAGE ===================== -->
   <main id="page" tabindex="-1" inert>
@@ -406,7 +439,7 @@
           Under one sky, two souls become one.
           <span class="ar-ui" lang="ar">تحت سماءٍ واحدة، تلتقي روحان لتصبحا واحدة</span>
         </p>
-        <div class="hero-date">Wednesday · June 3, 2026 · 7:00 PM</div>
+        <div class="hero-date">Thursday · September 3, 2026 · 7:00 PM</div>
       </div>
     </section>
 
@@ -447,7 +480,7 @@
             <div class="ic" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s7-6.4 7-12a7 7 0 1 0-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
             <h3>The Venue</h3>
             <div class="big">Tia-Vie</div>
-            <p>June 3, 2026</p>
+            <p>September 3, 2026</p>
             <p class="ar-ui" lang="ar">قاعة تيا ڤي</p>
             <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Tia-Vie" target="_blank" rel="noopener" aria-label="Get directions to Tia-Vie on Google Maps (opens in a new tab)">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s7-6.4 7-12a7 7 0 1 0-14 0c0 5.6 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
@@ -500,7 +533,7 @@
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" fill="currentColor" opacity="0.9"/></svg>
       </div>
       <div class="names" lang="ar">أحمد <span class="amp" aria-hidden="true">✦</span> سندس</div>
-      <div class="tag">June 3, 2026 · Tia-Vie</div>
+      <div class="tag">September 3, 2026 · Tia-Vie</div>
       <p class="blessing">With love, beneath the same stars. <span class="ar-ui" lang="ar" style="font-style:normal">بالحب، تحت ذات النجوم</span></p>
     </footer>
   </main>
@@ -521,16 +554,16 @@
     H = canvas.height = Math.floor(innerHeight * dpr);
     canvas.style.width = innerWidth + "px";
     canvas.style.height = innerHeight + "px";
-    var count = Math.min(150, Math.round((innerWidth * innerHeight) / 9000));
+    var count = Math.min(95, Math.round((innerWidth * innerHeight) / 15000));
     stars = [];
     for (var i = 0; i < count; i++) {
       stars.push({
         x: Math.random() * W, y: Math.random() * H,
-        r: (Math.random() * 1.3 + 0.3) * dpr,
-        a: Math.random() * 0.6 + 0.2,
-        tw: Math.random() * 0.02 + 0.004,
+        r: (Math.random() * 1.05 + 0.25) * dpr,
+        a: Math.random() * 0.42 + 0.12,
+        tw: Math.random() * 0.011 + 0.003,
         ph: Math.random() * Math.PI * 2,
-        gold: Math.random() > 0.78
+        gold: Math.random() > 0.82
       });
     }
   }
@@ -556,20 +589,20 @@
     ctx.clearRect(0, 0, W, H);
     for (var i = 0; i < stars.length; i++) {
       var s = stars[i];
-      var tw = s.a + Math.sin(t * s.tw + s.ph) * 0.18;
+      var tw = s.a + Math.sin(t * s.tw + s.ph) * 0.12;
       // gentle attraction glow near pointer
       var dx = s.x - pointer.x, dy = s.y - pointer.y;
       var d2 = dx * dx + dy * dy;
-      var near = d2 < (120 * dpr) * (120 * dpr);
-      var r = s.r * (near ? 1.8 : 1);
-      ctx.globalAlpha = Math.max(0.05, Math.min(1, near ? tw + 0.35 : tw));
+      var near = d2 < (110 * dpr) * (110 * dpr);
+      var r = s.r * (near ? 1.6 : 1);
+      ctx.globalAlpha = Math.max(0.04, Math.min(1, near ? tw + 0.28 : tw));
       ctx.fillStyle = s.gold || near ? "#f4dca0" : "#f3eedf";
       ctx.beginPath(); ctx.arc(s.x, s.y, r, 0, 6.283); ctx.fill();
     }
     ctx.globalAlpha = 1;
 
     // occasional shooting star
-    if (!shooting && t - lastShoot > 6000 && Math.random() < 0.012) {
+    if (!shooting && t - lastShoot > 11000 && Math.random() < 0.005) {
       shooting = { x: Math.random() * W * 0.6, y: Math.random() * H * 0.4, len: 0, vx: 6 * dpr, vy: 2.4 * dpr, life: 1 };
       lastShoot = t;
     }
@@ -617,7 +650,7 @@
   }, { passive: true });
 
   /* ---------- Countdown ---------- */
-  var target = new Date("2026-06-03T19:00:00").getTime();
+  var target = new Date("2026-09-03T19:00:00").getTime();
   var d = document.getElementById("cd-days"), h = document.getElementById("cd-hours"),
       m = document.getElementById("cd-mins"), s = document.getElementById("cd-secs");
   function pad(n) { return n < 10 ? "0" + n : "" + n; }
@@ -653,7 +686,7 @@
     var ics = [
       "BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Ahmed and Sondos//Wedding//EN",
       "BEGIN:VEVENT","UID:ahmed-sondos-2026@wedding","DTSTAMP:20260101T000000Z",
-      "DTSTART:20260603T190000","DTEND:20260603T230000",
+      "DTSTART:20260903T190000","DTEND:20260903T230000",
       "SUMMARY:Wedding of Ahmed & Sondos","DESCRIPTION:Under one sky, two souls become one.",
       "LOCATION:Tia-Vie","END:VEVENT","END:VCALENDAR"
     ].join("\r\n");
@@ -692,6 +725,68 @@
     form.reset(); render();
   });
   render();
+
+  /* ---------- Ambient oud (Web Audio, self-contained) ---------- */
+  var audio = (function () {
+    var ctx, master, lp, delay, fb, timer, playing = false, lastIdx = -1;
+    // Hijaz-flavoured set on D — warm, Middle-Eastern colour
+    var scale = [146.83, 155.56, 185.00, 196.00, 220.00, 233.08, 293.66];
+
+    function build() {
+      var AC = window.AudioContext || window.webkitAudioContext;
+      ctx = new AC();
+      master = ctx.createGain(); master.gain.value = 0.0001;
+      lp = ctx.createBiquadFilter(); lp.type = "lowpass"; lp.frequency.value = 2100; lp.Q.value = 0.6;
+      delay = ctx.createDelay(); delay.delayTime.value = 0.34;
+      fb = ctx.createGain(); fb.gain.value = 0.30;
+      delay.connect(fb); fb.connect(delay);
+      lp.connect(master); lp.connect(delay); delay.connect(master);
+      master.connect(ctx.destination);
+    }
+    function pluck(freq, when, gain) {
+      var g = ctx.createGain();
+      g.gain.setValueAtTime(0.0001, when);
+      g.gain.linearRampToValueAtTime(gain, when + 0.01);
+      g.gain.exponentialRampToValueAtTime(0.0001, when + 1.7);
+      var o1 = ctx.createOscillator(); o1.type = "triangle"; o1.frequency.value = freq;
+      var o2 = ctx.createOscillator(); o2.type = "triangle"; o2.frequency.value = freq * 2.001;
+      var g2 = ctx.createGain(); g2.gain.value = 0.28; o2.connect(g2);
+      o1.connect(g); g2.connect(g); g.connect(lp);
+      o1.start(when); o2.start(when); o1.stop(when + 1.8); o2.stop(when + 1.8);
+    }
+    function schedule() {
+      var idx; do { idx = Math.floor(Math.random() * scale.length); } while (idx === lastIdx && scale.length > 1);
+      lastIdx = idx;
+      var now = ctx.currentTime + 0.05;
+      pluck(scale[idx], now, 0.16);
+      if (Math.random() < 0.35) pluck(scale[(idx + 2) % scale.length], now + 0.2, 0.10);
+      timer = setTimeout(schedule, 1900 + Math.random() * 2400);
+    }
+    return {
+      toggle: function () {
+        if (!ctx) build();
+        if (ctx.state === "suspended") ctx.resume();
+        playing = !playing;
+        if (playing) {
+          master.gain.cancelScheduledValues(ctx.currentTime);
+          master.gain.setTargetAtTime(0.5, ctx.currentTime, 0.7);
+          schedule();
+        } else {
+          master.gain.setTargetAtTime(0.0001, ctx.currentTime, 0.5);
+          clearTimeout(timer);
+        }
+        return playing;
+      }
+    };
+  })();
+
+  var mt = document.getElementById("music-toggle");
+  mt.addEventListener("click", function () {
+    var on = audio.toggle();
+    mt.classList.toggle("on", on);
+    mt.setAttribute("aria-pressed", on ? "true" : "false");
+    mt.querySelector(".m-label").textContent = on ? "Playing" : "Music";
+  });
 })();
 </script>
 </body>
